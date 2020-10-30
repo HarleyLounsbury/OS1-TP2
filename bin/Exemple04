@@ -1,0 +1,10 @@
+!#/bin/bash
+
+if grep "^harley" /etc/passwd > /dev/null
+then
+echo "le compte existe déjà"
+else
+echo "le compte est inexistant"
+fi
+
+

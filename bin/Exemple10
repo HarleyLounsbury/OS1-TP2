@@ -1,0 +1,11 @@
+#Exemple10
+#!/bin/bash
+
+echo "répondez par o ou n"
+read reponse
+case $reponse in
+	[oO]*) echo "${reponse}ui" ;;		#//forme le mot “oui”
+	[nN]*)  echo "${reponse}on" ;;		#//forme le mot “non”
+ *) echo "reponse erronée!"
+esac
+

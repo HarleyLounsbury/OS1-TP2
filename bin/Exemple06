@@ -1,0 +1,15 @@
+#!/bin/bash
+
+fichier="/home/harley/Laboratoire8/bin/devoir1.html"
+
+# if pour vérifier l'existance du fichier et le droit de lecture de ce fichier
+
+if [ -e $fichier -a -r $fichier ]
+then
+echo "Je vais vérifier ton devoir"
+elif [ ! -e $fichier ]
+echo "ton devoir n'existe pas"
+else
+echo "Je ne peux pas l'ouvrir"
+fi
+

@@ -1,0 +1,6 @@
+Lounsbury#Harley#1988-09-22#harley.lounsbury@gmail.com#143#ch.Mont-Saint-Sauveur#Saint-Sauveur#J0R1R3#514-241-6615
+Doe#John#1985-01-01#john.doe@gmail.com#101#rueWorkman#Montreal#H4C1N4#514-123-7890
+Smith#Randy#1980-04-01#RandySmith@outlook.ca#123#rueChemin#Montreal#H414M3#514-456-7890
+Snow#Jon#1986-02-02#JonSnow@thewall.com#1#Winterfell#North#1A1A1A#123-456-7890
+Targaryan#Daenarys#1975-03-05#Khaleesi@essos.com#45#BayOfDragons#Essos#3R4G0N#450-424-8686
+

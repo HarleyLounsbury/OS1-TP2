@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# Vérifier que il y bien 1 argument.
+
+if [ $# -ne 1 ]
+then
+    echo "Ce programme nécissite 1 argument dans le format: yyyy-mm-jj.txt"
+else 
+# Coeur du programme.
+    if [ ! -e $1 ]
+    then
+        echo "Le Fichier n'existe pas."
+    else
+        if [ ! -r $1 ]
+        then
+            echo "Vous n'avez pas le droit de lecture."
+        else
+            # Le fichier existe et on a le droit de lecture. 
+            # On afficher le menu.
+            echo "1. Créez un fichier Excel dans le répertoire « Exemples » à partir des données du fichier original."
+            echo "2. Créez un répertoire « NE-dateDebSession » sous le répertoire « Exemples »."
+            echo "3. Créez un compte utilisateur pour chacun des élèves."
+            echo "4. Supprimer le répertoire d’un élève et son compte utilisateur (avec confirmation)."
+            echo "5. Sortir du menu."
+
+            # Demander le choix de l'utilisateur.
+            read -p "Veuillez entrer votre choix -->" choixMenu
+            # Valider le choix de l'utilisateur.
+            while [ $choixMenu -gt 5 -o $choixMenu -lt 1 ] 
+            do
+                echo "Saisi non-valide."
+                read -p "Veuillez entrer votre choix -->" choixMenu
+            done
+                    
+            # Isoler la date dans le nom du fichier.
+            chemin=`echo "$1" | cut -d'.' -f1`
+            dateDebut=`echo "$chemin" | cut -d'/' -f2`
+        
+            case $choixMenu in
+                1)
+                    # Choix 1
+                    
+                    fichierXLSX="$dateDebut.xlsx"
+                    if [ ! -e "/Exemples/$fichierXLSX" ]
+                    then
+                        # Créer le fichier
+                        touch Exemples/$fichierXLSX
+
+                        # Créer en-tête
+                        echo -e "Nom\tPrénom\tDate de Naissance\tE-mail\tAdresse\tNuméro de téléphone" > Exemples/$fichierXLSX
+                        # Saisir les champs du fichier texte.
+                        while IFS='#' read -r nom prenom dateNaissance email noCivique rue ville codePostal noTelephone || [[ -n "$nom" ]]; do                    
+                        echo -e "$nom\t$prenom\t$dateNaissance\t$email\t$noCivique $rue, $ville, $codePostal\t$noTelephone" >> Exemples/$fichierXLSX
+                    
+                        done < "$1"
+                    fi
+                    ;;
+
+                2) 
+                    # Choix 2
+                    # Créer sous-répertoire
+                    if [ ! -e "Exemples/NE-$dateDebut" ]
+                    then
+                        mkdir Exemples/NE-$dateDebut
+                        
+                        # Saisir les champs du fichier texte.
+                        while IFS='#' read -r nom prenom dateNaissance email noCivique rue ville codePostal noTelephone || [[ -n "$nom" ]]; do             
+                            # Vérifier l'existence du dossier avant sa création.       
+                            if [ ! -e "Exemples/NE-$dateDebut/$nom$Prenom" ]
+                            then
+                                # Créer le sous-dossier et le fichier texte qui contient un message.
+                                mkdir Exemples/NE-$dateDebut/$nom$prenom
+                                touch Exemples/NE-$dateDebut/$nom$prenom/commentaires.docx
+                                echo -e "Bonjour $nom $prenom\nAvez-vous des commentaires?" > Exemples/NE-$dateDebut/$nom$prenom/commentaires.docx
+                            fi
+                        done < "$1"
+                    else
+                        echo "Message"                    
+
+                    fi
+                    ;;
+
+                3)
+                    #Choix 3
+                    # Saisir les champs du fichier texte.
+                    sudo useradd testUser1
+                    while IFS='#' read -r nom prenom dateNaissance email noCivique rue ville codePostal noTelephone || [[ -n "$nom" ]]; do             
+                        
+                        
+
+                    done < "$1"
+                    ;;
+
+                *)
+                    echo "Erreur Inattendu."
+                    ;;
+            esac
+
+        fi
+    fi
+   
+    echo "Good Job, this is the end."
+fi
+
+echo "Good Job, this is the  double end."

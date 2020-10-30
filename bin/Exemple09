@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case $USER in 
+root) echo "Mes respets M. le $USER" ;;
+jean | stage1) echo "Salut à $USER" ;;
+toto) echo "Hello $USER" ;;
+*) echo "Bye, $USER" ;;
+esac
+
+
+
+ 
+
+
+
+

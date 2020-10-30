@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Afficher le signe d'un nombre puis afficher son opposé
+
+# Demander à l'utilisateur de saisir une valeur
+echo -n "Veuillez entrer un nombre: "
+read nb
+
+# test du signe du nombre avec des "if" imbriqués
+if [ $nb -gt 0 ]
+then
+    echo "Nombre positif"
+elif [ $nb -lt 0 ]
+then
+    echo "Nombre négatif"
+else
+    echo "Vous avez entré 0, je ne sais pas c'est quel signe."
+fi
+
+# Changement du signe du nombre
+let $[ nb = -nb ]
+
+echo "Le nombre choisi devient $nb"
+
+
+
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Ce script nécessite deux arguments
+
+if [ $# = 2 ]
+then
+echo "Bonjour $1 $2 et à la prochaine!"
+else
+echo "Syntaxe incorrecte, utilisez: $0 prenom nom"
+fi
+
+echo -e "Bonjour \n à vous \t tous!" ; date
+
+

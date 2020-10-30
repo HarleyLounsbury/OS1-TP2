@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Premier exemple
+
+echo "--- Bonjour $USER ---"
+
+echo -n "Nous sommes le: " ; date
+
+echo "Ton numéro d'utilisateur est: " $(grep "^$USER" /etc/passwd | cut -d: -f3)
+
+
+

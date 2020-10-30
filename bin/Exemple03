@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Veuillez entrer votre prénom et nom:"
+read prenom nom
+
+echo "Bonjour $prenom $nom"
+
+read -p "Entrez le nom d'utilisateur: " login
+echo "Votre login est: $login"
+
+read -p "Entrez le mot de passe:" -s motDePasse
+echo -e "\nVotre mot de passe est: $motDePasse"
+
+

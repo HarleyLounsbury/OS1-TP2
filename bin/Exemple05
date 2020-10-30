@@ -1,0 +1,9 @@
+#Exemple05
+#!/bin/bash
+read -p "Quelle est votre note? " note
+if [ $note -gt 85 ] 	#//---> test vrai, valeur retournée : 0
+then 
+	echo "Très bien !"
+else 
+	echo "À améliorer!" 
+fi
